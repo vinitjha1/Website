@@ -1,1 +1,505 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Preeti ka Shaadi.com - Match for Life</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #fff0f6;
+      color: #333;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: #e91e63;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    }
+
+    header .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1.5px;
+      cursor: default;
+      user-select: none;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.15);
+    }
+
+    header nav button {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+      font-weight: 600;
+      padding: 0.5rem 1.3rem;
+      margin-left: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    header nav button:hover {
+      background: white;
+      color: #e91e63;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem 1rem 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding: 0 1rem;
+    }
+
+    .hero h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      color: #9c174c;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      text-shadow: 0 1px 3px rgba(233, 30, 99, 0.5);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #7a2f56;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero .cta-buttons button {
+      background: #e91e63;
+      border: none;
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 2.2rem;
+      border-radius: 30px;
+      margin: 0 0.6rem;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgb(233 30 99 / 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .hero .cta-buttons button:hover {
+      background: #c2185b;
+    }
+
+    .search-panel {
+      background: white;
+      padding: 1.3rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgb(0 0 0 / 0.07);
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .search-panel label {
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #9c174c;
+      min-width: 100px;
+      flex: 1 1 120px;
+    }
+
+    .search-panel select,
+    .search-panel input[type=number] {
+      padding: 0.5rem 0.7rem;
+      border: 1.5px solid #e91e63;
+      border-radius: 8px;
+      margin-top: 0.3rem;
+      font-size: 1rem;
+      font-weight: 500;
+      color: #6a1b4d;
+    }
+
+    .search-panel button {
+      background: #9c174c;
+      color: white;
+      font-weight: 700;
+      padding: 0 2.2rem;
+      border-radius: 30px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      min-width: 130px;
+      height: 40px;
+      align-self: flex-end;
+      box-shadow: 0 4px 10px rgb(156 23 76 / 0.3);
+      transition: background 0.3s ease;
+    }
+
+    .search-panel button:hover {
+      background: #7a124b;
+    }
+
+    .profiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(230px,1fr));
+      gap: 1.7rem;
+      padding: 0 1rem;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 1px 8px rgb(0 0 0 / 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      user-select: none;
+    }
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgb(233 30 99 / 0.25);
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-bottom: 3px solid #e91e63;
+      border-radius: 16px 16px 0 0;
+      background: #fce4ec;
+    }
+
+    .profile-info {
+      padding: 1rem 1.2rem 1.3rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .profile-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #9c174c;
+      margin-bottom: 0.3rem;
+      text-transform: capitalize;
+    }
+
+    .profile-details {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #7a2f56;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.03em;
+    }
+
+    .profile-status {
+      padding: 0.25rem 0.9rem;
+      background: #e91e63;
+      color: white;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      width: fit-content;
+      align-self: flex-start;
+      box-shadow: 0 2px 6px rgb(233 30 99 / 0.3);
+      user-select: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem 1rem 1.2rem;
+      font-size: 0.85rem;
+      color: #7a2f56;
+      background: #fff0f6;
+      box-shadow: inset 0 1px 1px rgb(0 0 0 / 0.07);
+      user-select: none;
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 1rem 1rem;
+      }
+
+      header nav {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .search-panel {
+        flex-direction: column;
+        max-width: 100%;
+      }
+
+      .search-panel label {
+        min-width: auto;
+        flex: 1 1 100%;
+      }
+
+      .search-panel button {
+        width: 100%;
+        min-width: auto;
+        height: 45px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">ShaadiClone</div>
+    <nav>
+      <button id="btnLogin">Login</button>
+      <button id="btnSignup">Sign Up</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Website introduction">
+      <h1>Find Your Perfect Match for Life</h1>
+      <p>Connect with thousands of people looking for love and companionship. Start your journey today with ShaadiClone!</p>
+      <div class="cta-buttons" role="group" aria-label="Call to action buttons">
+        <button id="heroSignupBtn">Create Your Profile</button>
+        <button id="heroBrowseBtn">Browse Profiles</button>
+      </div>
+    </section>
+
+    <section class="search-panel" aria-label="Search and filter profiles">
+      <label for="filterGender">Gender
+        <select id="filterGender" name="gender" aria-describedby="genderDesc">
+          <option value="any" selected>Any</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </label>
+
+      <label for="filterAgeMin">Age Min
+        <input type="number" id="filterAgeMin" name="ageMin" min="18" max="80" value="18" aria-describedby="ageMinDesc" />
+      </label>
+
+      <label for="filterAgeMax">Age Max
+        <input type="number" id="filterAgeMax" name="ageMax" min="18" max="80" value="60" aria-describedby="ageMaxDesc" />
+      </label>
+
+      <label for="filterLocation">Location
+        <select id="filterLocation" name="location" aria-describedby="locationDesc">
+          <option value="any" selected>Any</option>
+          <option value="new york">New York</option>
+          <option value="los angeles">Los Angeles</option>
+          <option value="chicago">Chicago</option>
+          <option value="houston">Houston</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="delhi">Delhi</option>
+          <option value="kolkata">Kolkata</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+
+      <button id="btnSearchProfiles" aria-label="Search profiles with selected filters">Search</button>
+    </section>
+
+    <section class="profiles-grid" id="profilesGrid" aria-live="polite" aria-label="Profiles matching search criteria">
+      <!-- Profile cards inserted here by JS -->
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 ShaadiClone. Made with ❤️ for finding your life partner.
+  </footer>
+
+  <script>
+    // Sample profiles data
+    const profiles = [
+      {
+        id: 1,
+        name: 'Rajesh Kumar',
+        age: 28,
+        gender: 'male',
+        location: 'mumbai',
+        occupation: 'Software Engineer',
+        image: 'https://randomuser.me/api/portraits/men/75.jpg',
+        status: 'Available'
+      },
+      {
+        id: 2,
+        name: 'Anita Singh',
+        age: 25,
+        gender: 'female',
+        location: 'delhi',
+        occupation: 'Graphic Designer',
+        image: 'https://randomuser.me/api/portraits/women/65.jpg',
+        status: 'Available'
+      },
+      {
+        id: 3,
+        name: 'Michael Johnson',
+        age: 32,
+        gender: 'male',
+        location: 'new york',
+        occupation: 'Product Manager',
+        image: 'https://randomuser.me/api/portraits/men/33.jpg',
+        status: 'Available'
+      },
+      {
+        id: 4,
+        name: 'Sara Parker',
+        age: 29,
+        gender: 'female',
+        location: 'los angeles',
+        occupation: 'Marketing Specialist',
+        image: 'https://randomuser.me/api/portraits/women/44.jpg',
+        status: 'Available'
+      },
+      {
+        id: 5,
+        name: 'Amit Shah',
+        age: 35,
+        gender: 'male',
+        location: 'chicago',
+        occupation: 'Business Analyst',
+        image: 'https://randomuser.me/api/portraits/men/12.jpg',
+        status: 'Busy'
+      },
+      {
+        id: 6,
+        name: 'Priya Mehta',
+        age: 27,
+        gender: 'female',
+        location: 'mumbai',
+        occupation: 'Teacher',
+        image: 'https://randomuser.me/api/portraits/women/20.jpg',
+        status: 'Available'
+      },
+      {
+        id: 7,
+        name: 'John Smith',
+        age: 30,
+        gender: 'male',
+        location: 'houston',
+        occupation: 'Civil Engineer',
+        image: 'https://randomuser.me/api/portraits/men/40.jpg',
+        status: 'Available'
+      },
+      {
+        id: 8,
+        name: 'Neha Gupta',
+        age: 26,
+        gender: 'female',
+        location: 'kolkata',
+        occupation: 'Pharmacist',
+        image: 'https://randomuser.me/api/portraits/women/10.jpg',
+        status: 'Busy'
+      }
+    ];
+
+    // Reference to profiles container
+    const profilesGrid = document.getElementById('profilesGrid');
+
+    // Function to create a profile card element
+    function createProfileCard(profile) {
+      const card = document.createElement('div');
+      card.className = 'profile-card';
+      card.tabIndex = 0;
+      card.setAttribute('aria-label', `${profile.name}, ${profile.age} years old, ${profile.gender}, located in ${capitalize(profile.location)}`);
+
+      card.innerHTML = `
+        <img class="profile-img" src="${profile.image}" alt="Photo of ${profile.name}" loading="lazy" />
+        <div class="profile-info">
+          <div>
+            <div class="profile-title">${profile.name}</div>
+            <div class="profile-details">${profile.age} years old | ${capitalize(profile.location)}<br>${profile.occupation}</div>
+          </div>
+          <div class="profile-status" aria-live="polite">${profile.status}</div>
+        </div>
+      `;
+      return card;
+    }
+
+    // Utility to capitalize words
+    function capitalize(str) {
+      if (!str) return '';
+      return str.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+    }
+
+    // Render profiles
+    function renderProfiles(profilesToShow) {
+      profilesGrid.innerHTML = '';
+      if (profilesToShow.length === 0) {
+        profilesGrid.innerHTML = '<p style="text-align:center; color:#9c174c; font-weight:700;">No profiles found matching your criteria.</p>';
+        return;
+      }
+      profilesToShow.forEach(profile => {
+        profilesGrid.appendChild(createProfileCard(profile));
+      });
+    }
+
+    // Filter profiles based on form inputs
+    function filterProfiles() {
+      const gender = document.getElementById('filterGender').value;
+      const ageMin = parseInt(document.getElementById('filterAgeMin').value, 10);
+      const ageMax = parseInt(document.getElementById('filterAgeMax').value, 10);
+      const location = document.getElementById('filterLocation').value;
+
+      let filtered = profiles.filter(profile => {
+        if (gender !== 'any' && profile.gender !== gender) return false;
+        if (profile.age < ageMin || profile.age > ageMax) return false;
+        if (location !== 'any' && profile.location !== location) return false;
+        return true;
+      });
+      renderProfiles(filtered);
+    }
+
+    // Event listeners for buttons
+    document.getElementById('btnSearchProfiles').addEventListener('click', (e) => {
+      e.preventDefault();
+      filterProfiles();
+    });
+
+    // Hero buttons just scroll to search or profiles area
+    document.getElementById('heroBrowseBtn').addEventListener('click', () => {
+      document.getElementById('filterGender').focus();
+    });
+
+    // Dummy sign up and login button handlers for demonstration
+    function onAuthClick(type) {
+      alert(type + ' functionality is not implemented in this demo.');
+    }
+    document.getElementById('btnLogin').addEventListener('click', () => onAuthClick('Login'));
+    document.getElementById('btnSignup').addEventListener('click', () => onAuthClick('Sign Up'));
+    document.getElementById('heroSignupBtn').addEventListener('click', () => onAuthClick('Sign Up'));
+
+    // Initial render all profiles
+    renderProfiles(profiles);
+  </script>
+</body>
+</html>
+
